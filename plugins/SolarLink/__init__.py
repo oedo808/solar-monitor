@@ -93,7 +93,11 @@ class Util():
         if self.poll_loop_count == 3:
             data = self.create_poll_request('SolarPanelInfo')
         if self.poll_loop_count == 5:
+<<<<<<< HEAD
             data = self.create_poll_request('SolarPanelAndBatteryState')
+=======
+            self.create_poll_request('SolarPanelAndBatteryState')
+>>>>>>> 78dbbd7... Turning on SolarPanelAndBatteryState polling
         # if self.poll_loop_count == 7:
         #     self.create_poll_request('ParamSettingData')
         if self.poll_loop_count == 10:
@@ -156,6 +160,7 @@ class Util():
     def updateSolarPanelAndBatteryState(self, bs):
         logging.debug("mSolarPanelState {} => {}".format(int(bs[3]), self.Bytes2Int(bs, 3, 1) >> 7))
         logging.debug("mBatteryState {} => {}".format(int(bs[4]), self.Bytes2Int(bs, 4, 1)))
+<<<<<<< HEAD
         #logging.debug("mControllerInfo {} {} {} {} => {}".format(int(bs[5]), int(bs[6]), int(bs[7]), int(bs[8]), self.Bytes2Int(bs, 5, 4)))
         # the packet received seems to be between 7 and 19 in length for some reason (like it's reading the next few words even though I told it to read 1 word)
         # when the length is > 7 the chargeState seems to be in index 4, otherwise it's in index 5
@@ -165,6 +170,9 @@ class Util():
             chargeStateIndex = 4
         self.PowerDevice.entities.charge_state = int(bs[chargeStateIndex])
         logging.debug("mChargeState {} => {} - chargeStateIndex: {}".format(int(bs[chargeStateIndex]), self.PowerDevice.entities.charge_state, chargeStateIndex))
+=======
+        # logging.debug("mControllerInfo {} {} {} {} => {}".format(int(bs[5]), int(bs[6]), int(bs[7]), int(bs[8]), self.Bytes2Int(bs, 5, 4)))
+>>>>>>> 78dbbd7... Turning on SolarPanelAndBatteryState polling
         return
 
     def updateSolarPanelInfo(self, bs):
