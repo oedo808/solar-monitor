@@ -21,8 +21,8 @@ class Util():
         RESP_ID   = 14
     class SolarPanelAndBatteryState():
         REG_ADDR  = 288
-        READ_WORD = 3
-        RESP_ID   = 6
+        READ_WORD = 1
+        RESP_ID   = 2
     class SolarPanelInfo():
         REG_ADDR  = 263
         READ_WORD = 4
@@ -92,8 +92,8 @@ class Util():
             data = self.create_poll_request('BatteryParamInfo')
         if self.poll_loop_count == 3:
             data = self.create_poll_request('SolarPanelInfo')
-        # if self.poll_loop_count == 5:
-        #     self.create_poll_request('SolarPanelAndBatteryState')
+        if self.poll_loop_count == 5:
+            self.create_poll_request('SolarPanelAndBatteryState')
         # if self.poll_loop_count == 7:
         #     self.create_poll_request('ParamSettingData')
         if self.poll_loop_count == 10:
@@ -155,7 +155,7 @@ class Util():
     def updateSolarPanelAndBatteryState(self, bs):
         logging.debug("mSolarPanelState {} => {}".format(int(bs[3]), self.Bytes2Int(bs, 3, 1) >> 7))
         logging.debug("mBatteryState {} => {}".format(int(bs[4]), self.Bytes2Int(bs, 4, 1)))
-        logging.debug("mControllerInfo {} {} {} {} => {}".format(int(bs[5]), int(bs[6]), int(bs[7]), int(bs[8]), self.Bytes2Int(bs, 5, 4)))
+        # logging.debug("mControllerInfo {} {} {} {} => {}".format(int(bs[5]), int(bs[6]), int(bs[7]), int(bs[8]), self.Bytes2Int(bs, 5, 4)))
         return
 
     def updateSolarPanelInfo(self, bs):
