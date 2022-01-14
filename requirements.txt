@@ -1,7 +1,7 @@
 gatt
 configparser
-libscrc
-json
+#libscrc
+#json
 requests
 paho-mqtt
-threading
+#threading
