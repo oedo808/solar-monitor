@@ -172,6 +172,7 @@ class Util():
         # when the length is > 7 the chargeState seems to be in index 4, otherwise it's in index 5
         # ToDo: remove validation & chargeState text from here, it's been added to solardevice.py
         chargeStateIndex = 5
+<<<<<<< HEAD
         if len(bs) < 8:
             chargeStateIndex = 4
         self.PowerDevice.entities.charge_state = int(bs[chargeStateIndex])
@@ -230,6 +231,12 @@ class Util():
 =======
         logging.debug("mChargeState {} => {} - chargeStateIndex: {}".format(int(bs[chargeStateElement]), self.PowerDevice.entities.charge_state, chargeStateIndex))
 >>>>>>> c714b8b... debug log format change + log dynamic state index
+=======
+        if len(bs) < 8:
+            chargeStateIndex = 4
+        self.PowerDevice.entities.charge_state = int(bs[chargeStateIndex])
+        logging.debug("mChargeState {} => {} - chargeStateIndex: {}".format(int(bs[chargeStateIndex]), self.PowerDevice.entities.charge_state, chargeStateIndex))
+>>>>>>> bf996ab... switching element to index bc it sounds better
         return
 
     def updateSolarPanelInfo(self, bs):
