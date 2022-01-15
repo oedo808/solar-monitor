@@ -160,11 +160,11 @@ class Util():
         # the packet received seems to be between 7 and 19 in length for some reason (like it's reading the next few words even though I told it to read 1 word)
         # when the length is > 7 the chargeState seems to be in index 4, otherwise it's in index 5
         # ToDo: remove validation & chargeState text from here, it's been added to solardevice.py
-        chargeStateElement = 5
+        chargeStateIndex = 5
         if len(bs) < 8:
-            chargeStateElement = 4
-        self.PowerDevice.entities.charge_state = int(bs[chargeStateElement])
-        logging.debug("mChargeState {} => {} - chargeStateIndex: {}".format(int(bs[chargeStateElement]), self.PowerDevice.entities.charge_state, chargeStateIndex))
+            chargeStateIndex = 4
+        self.PowerDevice.entities.charge_state = int(bs[chargeStateIndex])
+        logging.debug("mChargeState {} => {} - chargeStateIndex: {}".format(int(bs[chargeStateIndex]), self.PowerDevice.entities.charge_state, chargeStateIndex))
         return
 
     def updateSolarPanelInfo(self, bs):
