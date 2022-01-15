@@ -713,6 +713,7 @@ class PowerDevice():
     def charge_state(self):
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         chargeStateStr = ["charging deactivated","charging activated","mppt charging mode","equalizing charging mode","boost charging mode","floating charging mode","current limiting (overpower)"]
         return chargeStateStr[int(self.charge_mstate)]
     @charge_state.setter
@@ -736,6 +737,12 @@ class PowerDevice():
         self._charge_mstate = self.chargeState.index(value)
 >>>>>>> 7b1f5be... fix in charge_state.setter
 
+=======
+        return self._chargeState[self._charge_mstate]
+    @charge_state.setter
+    def charge_state(self, value):
+        self._charge_mstate = self._chargeState.index(value)
+>>>>>>> 2e29497... fixing incorrect ref on charge_state
 
     @property
     def power_switch(self):
