@@ -689,7 +689,7 @@ class PowerDevice():
 
     @property
     def charge_state(self):
-        return self._chargeState[self._charge_mstate['val']]
+        return self._chargeState[self.charge_mstate]
     @charge_state.setter
     def charge_state(self, value):
         self.charge_mstate = value
@@ -735,7 +735,6 @@ class PowerDevice():
                 out = "{} {} == {},".format(out, var, self.__dict__[var])
         logging.debug(out)
 
-    
     def validate(self, var, val):
         definition = getattr(self, var)
         val = float(val)
