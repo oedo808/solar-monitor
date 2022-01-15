@@ -422,7 +422,6 @@ class PowerDevice():
             'max': 6,
             'maxdiff': 6
         }
-        self._chargeState = ["charging deactivated","charging activated","mppt charging mode","equalizing charging mode","boost charging mode","floating charging mode","current limiting (overpower)"]
         self._msg = None
         self._status = None
 
