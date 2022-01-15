@@ -675,16 +675,20 @@ class PowerDevice():
 
     @property
     def charge_mstate(self):
+        logging.debug("charge_mstate read {}".format(self._charge_mstate))
         return self._charge_mstate
     @charge_mstate.setter
     def charge_mstate(self, value):
+        logging.debug("charge_mstate set {}".format(value))
         self.validate('_charge_mstate', value)
 
     @property
     def charge_state(self):
+        logging.debug("charge_state read {}".format(self.chargeState[self._charge_mstate]))
         return self.chargeState[self._charge_mstate]
     @charge_state.setter
     def charge_state(self, value):
+        logging.debug("charge_state set {}, ".format(value, self.chargeState.index(value)))
         self._charge_mstate = self.chargeState.index(value)
 
 
