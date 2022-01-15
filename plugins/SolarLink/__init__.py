@@ -105,8 +105,12 @@ class Util():
         if self.poll_loop_count == 5:
             data = self.create_poll_request('SolarPanelAndBatteryState')
         if self.poll_loop_count == 7:
+<<<<<<< HEAD
             self.create_poll_request('HistoricalData')
 >>>>>>> d02932d... dumping historical data hex to evaluate
+=======
+            data = self.create_poll_request('HistoricalData')
+>>>>>>> ad0d156... adding temp prop for historical data
         # if self.poll_loop_count == 7:
         #     self.create_poll_request('ParamSettingData')
         if self.poll_loop_count == 10:
@@ -218,6 +222,7 @@ class Util():
 
     def updateHistoricalData(self, bs):
         logging.debug("Historical Hex Data Dump: {}".format(bs.hex()))
+        self.PowerDevice.entities.hist_data_temp = bs
 
     def Bytes2Int(self, bs, offset, length):
         # Reads data from a list of bytes, and converts to an int

@@ -400,6 +400,18 @@ class PowerDevice():
             'max': 15000,
             'maxdiff': 15000
         }
+<<<<<<< HEAD
+=======
+        self._charge_mstate = {
+            'val': 0,
+            'min': 0,
+            'max': 6,
+            'maxdiff': 6
+        }
+        self._hist_data_temp = { 
+            'val': b'\xff\x03\x0e\x00H\x00\x84\x00%\x11\x07\x00\x84\x00\x00\x00\x00r\xb0'
+        }
+>>>>>>> ad0d156... adding temp prop for historical data
         self._msg = None
         self._status = None
 
@@ -638,6 +650,31 @@ class PowerDevice():
     def charge_power(self, value):
         self.charge_mpower = value * 1000
 
+<<<<<<< HEAD
+=======
+    @property
+    def charge_mstate(self):
+        return self._charge_mstate['val']
+    @charge_mstate.setter
+    def charge_mstate(self, value):
+        self.validate('_charge_mstate', value)
+
+    @property
+    def charge_state(self):
+        chargeStateStr = ["charging deactivated","charging activated","mppt charging mode","equalizing charging mode","boost charging mode","floating charging mode","current limiting (overpower)"]
+        return chargeStateStr[int(self.charge_mstate)]
+    @charge_state.setter
+    def charge_state(self, value):
+        self.charge_mstate = value
+
+    @property
+    def hist_data_temp(self):
+        return self._hist_data_temp['val']
+    @hist_data_temp.setter
+    def hist_data_temp(self, value):
+        self._hist_data_temp['val'] = value
+
+>>>>>>> ad0d156... adding temp prop for historical data
 
     @property
     def power_switch(self):
