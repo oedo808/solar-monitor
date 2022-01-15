@@ -102,7 +102,7 @@ class Util():
 =======
         if self.poll_loop_count == 5:
             data = self.create_poll_request('SolarPanelAndBatteryState')
-        if self.poll_loop_count == 5:
+        if self.poll_loop_count == 7:
             self.create_poll_request('HistoricalData')
 >>>>>>> d02932d... dumping historical data hex to evaluate
         # if self.poll_loop_count == 7:
