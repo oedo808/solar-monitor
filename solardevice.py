@@ -209,7 +209,8 @@ class SolarDevice(gatt.Device):
             items = ['current', 'input_current', 'charge_current',
                      'voltage', 'input_voltage', 'charge_voltage',
                      'power',   'input_power',   'charge_power',
-                     'soc', 'capacity', 'charge_cycles', 'state', 'health', 'power_switch'
+                     'soc', 'capacity', 'charge_cycles', 'state', 'health', 'power_switch',
+                     'charge_state'
                     ]
             for item in items:
                 try:
