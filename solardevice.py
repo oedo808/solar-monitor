@@ -222,6 +222,7 @@ class SolarDevice(gatt.Device):
             # I can't seem to get charge_state to log
             try:
                 self.datalogger.log(self.logger_name, 'charge_mstate', self.entities.charge_mstate)
+                self.datalogger.log(self.logger_name, 'charge_state_forced', self.entities.charge_state)
             except:
                 pass
 
@@ -675,7 +676,6 @@ class PowerDevice():
 
     @property
     def charge_power(self):
-        logging.debug("charge_power read {}".format(self.charge_mpower))
         return round(self.charge_mpower / 1000, 1)
     @charge_power.setter
     def charge_power(self, value):
@@ -683,11 +683,9 @@ class PowerDevice():
 
     @property
     def charge_mstate(self):
-        logging.debug("charge_mstate read {}".format(self._charge_mstate))
         return self._charge_mstate['val']
     @charge_mstate.setter
     def charge_mstate(self, value):
-        logging.debug("charge_mstate set {}".format(value))
         self.validate('_charge_mstate', value)
 
     @property
