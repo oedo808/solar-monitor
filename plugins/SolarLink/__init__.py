@@ -74,6 +74,8 @@ class Util():
                 self.updateSolarPanelInfo(value)
             if value[2] == self.ParamSettingData.READ_WORD * 2:
                 self.updateParamSettingData(value)
+            if value[2] == self.HistoricalData.READ_WORD * 2:
+                self.updateHistoricalData(value)
 
         elif value[0] == self.PowerDevice.device_id and value[1] == self.function_WRITE:
             # This is the first packet in a write-response
