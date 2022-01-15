@@ -220,10 +220,10 @@ class SolarDevice(gatt.Device):
                     pass
 
             # I can't seem to get charge_state to log
-            try:
+            '''try:
                 self.datalogger.log(self.logger_name, 'forced_charge_state', self.entities.charge_state)
             except:
-                pass
+                pass'''
 
             # We want celsius, not kelvin
             try:
@@ -694,9 +694,13 @@ class PowerDevice():
 =======
 =======
         logging.debug("charge_mstate read {}".format(self._charge_mstate))
+<<<<<<< HEAD
 >>>>>>> 1211f7c... debugging charge_state props
         return self._charge_mstate
 >>>>>>> 6f4b5cb... Adding properties and validation for charge state
+=======
+        return self._charge_mstate['val']
+>>>>>>> f44ad6e... previously missed a key charge_mstate property
     @charge_mstate.setter
     def charge_mstate(self, value):
         logging.debug("charge_mstate set {}".format(value))
