@@ -718,6 +718,7 @@ class PowerDevice():
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         chargeStateStr = ["charging deactivated","charging activated","mppt charging mode","equalizing charging mode","boost charging mode","floating charging mode","current limiting (overpower)"]
         return chargeStateStr[int(self.charge_mstate)]
     @charge_state.setter
@@ -749,6 +750,9 @@ class PowerDevice():
 >>>>>>> 2e29497... fixing incorrect ref on charge_state
 =======
         return self._chargeState[self._charge_mstate['val']]
+=======
+        return self._chargeState[self.charge_mstate]
+>>>>>>> 5178416... another charge_state fix, python classes annoy me
     @charge_state.setter
     def charge_state(self, value):
         self.charge_mstate = value
