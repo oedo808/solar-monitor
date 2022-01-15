@@ -214,6 +214,7 @@ class Util():
         if int(bs[chargeStateElement]) >= 0 and int(bs[chargeStateElement]) <=6:
             logging.debug("mChargeState {} => {}".format(int(bs[chargeStateElement]), self.SolarPanelAndBatteryState.chargeState[int(bs[chargeStateElement])]))
             self.PowerDevice.entities.charge_state = int(bs[chargeStateElement])
+            logging.debug("charge_state set {} => {}".format(int(bs[chargeStateElement]), self.PowerDevice.entities.charge_state))
         else:
 <<<<<<< HEAD
             logging.debug("Invalid charge state, should be between 0 and 6 -> val: {}".format(int(bs[5]))
