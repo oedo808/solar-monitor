@@ -756,8 +756,12 @@ class PowerDevice():
 >>>>>>> 5178416... another charge_state fix, python classes annoy me
 =======
         chargeStateStr = ["charging deactivated","charging activated","mppt charging mode","equalizing charging mode","boost charging mode","floating charging mode","current limiting (overpower)"]
+<<<<<<< HEAD
         return chargeStateStr[self.charge_mstate]
 >>>>>>> e90e12d... no idea what's wrong with charge_state
+=======
+        return chargeStateStr[int(self.charge_mstate)]
+>>>>>>> 2e13970... I miss strongly typed languages sometimes
     @charge_state.setter
     def charge_state(self, value):
         self.charge_mstate = value
