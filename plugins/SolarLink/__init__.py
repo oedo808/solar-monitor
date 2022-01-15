@@ -23,7 +23,6 @@ class Util():
         REG_ADDR  = 288
         READ_WORD = 1
         RESP_ID   = 2
-        chargeState = ["charging deactivated","charging activated","mppt charging mode","equalizing charging mode","boost charging mode","floating charging mode","current limiting (overpower)"]
     class SolarPanelInfo():
         REG_ADDR  = 263
         READ_WORD = 4
@@ -164,12 +163,8 @@ class Util():
         chargeStateElement = 5
         if len(bs) < 8:
             chargeStateElement = 4
-        if int(bs[chargeStateElement]) >= 0 and int(bs[chargeStateElement]) <=6:
-            logging.debug("mChargeState {} => {}".format(int(bs[chargeStateElement]), self.SolarPanelAndBatteryState.chargeState[int(bs[chargeStateElement])]))
-            self.PowerDevice.entities.charge_state = int(bs[chargeStateElement])
-            logging.debug("charge_state set {} => {}".format(int(bs[chargeStateElement]), self.PowerDevice.entities.charge_state))
-        else:
-            logging.debug("Invalid charge state, should be between 0 and 6 -> val: {}".format(int(bs[5])))
+        self.PowerDevice.entities.charge_state = int(bs[chargeStateElement])
+        logging.debug("charge_state set {} => {}".format(int(bs[chargeStateElement]), self.PowerDevice.entities.charge_state))
         return
 
     def updateSolarPanelInfo(self, bs):
