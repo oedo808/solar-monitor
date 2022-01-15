@@ -417,7 +417,7 @@ class PowerDevice():
             'maxdiff': 15000
         }
         self._charge_mstate = {
-            'val': 6,
+            'val': 0,
             'min': 0,
             'max': 6,
             'maxdiff': 6
@@ -751,7 +751,7 @@ class PowerDevice():
         return self._chargeState[self._charge_mstate['val']]
     @charge_state.setter
     def charge_state(self, value):
-        self._charge_mstate['val'] = self._chargeState.index(value)
+        self.charge_mstate = value
 
 >>>>>>> f5adef0... fixing another breaking issue on charge_state
 

@@ -206,14 +206,14 @@ class Util():
 =======
 >>>>>>> 6f4b5cb... Adding properties and validation for charge state
         # the packet received seems to be between 7 and 19 in length for some reason (like it's reading the next few words even though I told it to read 1 word)
-        # when the length is > 7 the chargeState seems to be in element 4, otherwise it's in element 5
+        # when the length is > 7 the chargeState seems to be in index 4, otherwise it's in index 5
         # ToDo: remove validation & chargeState text from here, it's been added to solardevice.py
         chargeStateElement = 5
         if len(bs) < 8:
             chargeStateElement = 4
         if int(bs[chargeStateElement]) >= 0 and int(bs[chargeStateElement]) <=6:
             logging.debug("mChargeState {} => {}".format(int(bs[chargeStateElement]), self.SolarPanelAndBatteryState.chargeState[int(bs[chargeStateElement])]))
-            self.PowerDevice.entities.charge_mstate = int(bs[chargeStateElement])
+            self.PowerDevice.entities.charge_state = int(bs[chargeStateElement])
         else:
 <<<<<<< HEAD
             logging.debug("Invalid charge state, should be between 0 and 6 -> val: {}".format(int(bs[5]))
