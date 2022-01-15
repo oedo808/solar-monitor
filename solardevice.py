@@ -416,7 +416,11 @@ class PowerDevice():
             'maxdiff': 6
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+        self._charge_state = "current limiting (overpower)"
+>>>>>>> 755b8ec... adding a default _charge_state
         self._chargeState = ["charging deactivated","charging activated","mppt charging mode","equalizing charging mode","boost charging mode","floating charging mode","current limiting (overpower)"]
 >>>>>>> 6f4b5cb... Adding properties and validation for charge state
         self._msg = None
