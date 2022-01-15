@@ -699,8 +699,12 @@ class PowerDevice():
         return self.chargeState[self._charge_mstate]
     @charge_state.setter
     def charge_state(self, value):
+<<<<<<< HEAD
         self.validate('_charge_mstate', self.chargeState[value])
 >>>>>>> 6f4b5cb... Adding properties and validation for charge state
+=======
+        self._charge_mstate = self.chargeState.index(value)
+>>>>>>> 7b1f5be... fix in charge_state.setter
 
 
     @property
