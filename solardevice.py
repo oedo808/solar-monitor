@@ -685,7 +685,7 @@ class PowerDevice():
         return self.chargeState[self._charge_mstate]
     @charge_state.setter
     def charge_state(self, value):
-        self.validate('_charge_mstate', self.chargeState[value])
+        self._charge_mstate = self.chargeState.index(value)
 
 
     @property
