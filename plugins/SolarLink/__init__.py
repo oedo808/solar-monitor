@@ -184,6 +184,7 @@ class Util():
         logging.debug("mControllerInfo {} {} {} {} => {}".format(int(bs[5]), int(bs[6]), int(bs[7]), int(bs[8]), self.Bytes2Int(bs, 5, 4)))
 =======
         #logging.debug("mControllerInfo {} {} {} {} => {}".format(int(bs[5]), int(bs[6]), int(bs[7]), int(bs[8]), self.Bytes2Int(bs, 5, 4)))
+<<<<<<< HEAD
 >>>>>>> 86dc4be... Removing indexes above 5
         '''chargeStateVal = int(bs[5])
         chargeStateStr = ""
@@ -202,16 +203,17 @@ class Util():
         elif chargeState == 6: 
             chargeStateStr = "current limiting (overpower)"'''
         chargeStateLocal = ["charging deactivated","charging activated","mppt charging mode","equalizing charging mode","boost charging mode","floating charging mode","current limiting (overpower)"]
+=======
+>>>>>>> 6f4b5cb... Adding properties and validation for charge state
         # the packet received seems to be between 7 and 19 in length for some reason (like it's reading the next few words even though I told it to read 1 word)
         # when the length is > 7 the chargeState seems to be in element 4, otherwise it's in element 5
+        # ToDo: remove validation & chargeState text from here, it's been added to solardevice.py
         chargeStateElement = 5
         if len(bs) < 8:
             chargeStateElement = 4
         if int(bs[chargeStateElement]) >= 0 and int(bs[chargeStateElement]) <=6:
-            try:
-                logging.debug("mChargeState {} => {}".format(int(bs[chargeStateElement]), self.SolarPanelAndBatteryState.chargeState[int(bs[chargeStateElement])]))
-            except:
-                logging.debug("mChargeState {} => {}".format(int(bs[chargeStateElement]), chargeStateLocal[int(bs[chargeStateElement])]))
+            logging.debug("mChargeState {} => {}".format(int(bs[chargeStateElement]), self.SolarPanelAndBatteryState.chargeState[int(bs[chargeStateElement])]))
+            self.PowerDevice.entities.charge_mstate = int(bs[chargeStateElement])
         else:
 <<<<<<< HEAD
             logging.debug("Invalid charge state, should be between 0 and 6 -> val: {}".format(int(bs[5]))

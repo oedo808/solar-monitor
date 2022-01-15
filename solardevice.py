@@ -415,6 +415,10 @@ class PowerDevice():
             'max': 6,
             'maxdiff': 6
         }
+<<<<<<< HEAD
+=======
+        self._chargeState = ["charging deactivated","charging activated","mppt charging mode","equalizing charging mode","boost charging mode","floating charging mode","current limiting (overpower)"]
+>>>>>>> 6f4b5cb... Adding properties and validation for charge state
         self._msg = None
         self._status = None
 
@@ -674,18 +678,29 @@ class PowerDevice():
 
     @property
     def charge_mstate(self):
+<<<<<<< HEAD
         return self._charge_mstate['val']
+=======
+        return self._charge_mstate
+>>>>>>> 6f4b5cb... Adding properties and validation for charge state
     @charge_mstate.setter
     def charge_mstate(self, value):
         self.validate('_charge_mstate', value)
 
     @property
     def charge_state(self):
+<<<<<<< HEAD
         chargeStateStr = ["charging deactivated","charging activated","mppt charging mode","equalizing charging mode","boost charging mode","floating charging mode","current limiting (overpower)"]
         return chargeStateStr[int(self.charge_mstate)]
     @charge_state.setter
     def charge_state(self, value):
         self.charge_mstate = value
+=======
+        return self.chargeState[self._charge_mstate]
+    @charge_state.setter
+    def charge_state(self, value):
+        self.validate('_charge_mstate', self.chargeState[value])
+>>>>>>> 6f4b5cb... Adding properties and validation for charge state
 
 
     @property
