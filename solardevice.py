@@ -415,6 +415,9 @@ class PowerDevice():
             'max': 6,
             'maxdiff': 6
         }
+        self._hist_data_temp = { 
+            'val': b'\xff\x03\x0e\x00H\x00\x84\x00%\x11\x07\x00\x84\x00\x00\x00\x00r\xb0'
+        }
         self._msg = None
         self._status = None
 
@@ -686,6 +689,13 @@ class PowerDevice():
     @charge_state.setter
     def charge_state(self, value):
         self.charge_mstate = value
+
+    @property
+    def hist_data_temp(self):
+        return self._hist_data_temp['val']
+    @hist_data_temp.setter
+    def hist_data_temp(self, value):
+        self._hist_data_temp['val'] = value
 
 
     @property
