@@ -424,10 +424,13 @@ class PowerDevice():
         }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
         self._charge_state = "current limiting (overpower)"
 >>>>>>> 755b8ec... adding a default _charge_state
+=======
+>>>>>>> f5adef0... fixing another breaking issue on charge_state
         self._chargeState = ["charging deactivated","charging activated","mppt charging mode","equalizing charging mode","boost charging mode","floating charging mode","current limiting (overpower)"]
 >>>>>>> 6f4b5cb... Adding properties and validation for charge state
         self._msg = None
@@ -714,6 +717,7 @@ class PowerDevice():
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         chargeStateStr = ["charging deactivated","charging activated","mppt charging mode","equalizing charging mode","boost charging mode","floating charging mode","current limiting (overpower)"]
         return chargeStateStr[int(self.charge_mstate)]
     @charge_state.setter
@@ -743,6 +747,13 @@ class PowerDevice():
     def charge_state(self, value):
         self._charge_mstate = self._chargeState.index(value)
 >>>>>>> 2e29497... fixing incorrect ref on charge_state
+=======
+        return self._chargeState[self._charge_mstate['val']]
+    @charge_state.setter
+    def charge_state(self, value):
+        self._charge_mstate['val'] = self._chargeState.index(value)
+
+>>>>>>> f5adef0... fixing another breaking issue on charge_state
 
     @property
     def power_switch(self):
