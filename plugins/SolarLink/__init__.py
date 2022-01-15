@@ -23,6 +23,7 @@ class Util():
         REG_ADDR  = 288
         READ_WORD = 1
         RESP_ID   = 2
+        chargeState = ["charging deactivated","charging activated","mppt charging mode","equalizing charging mode","boost charging mode","floating charging mode","current limiting (overpower)"]
     class SolarPanelInfo():
         REG_ADDR  = 263
         READ_WORD = 4
@@ -94,10 +95,14 @@ class Util():
             data = self.create_poll_request('SolarPanelInfo')
         if self.poll_loop_count == 5:
 <<<<<<< HEAD
+<<<<<<< HEAD
             data = self.create_poll_request('SolarPanelAndBatteryState')
 =======
             self.create_poll_request('SolarPanelAndBatteryState')
 >>>>>>> 78dbbd7... Turning on SolarPanelAndBatteryState polling
+=======
+            data = self.create_poll_request('SolarPanelAndBatteryState')
+>>>>>>> 2a00b85... returning new state data, adding string arrays
         # if self.poll_loop_count == 7:
         #     self.create_poll_request('ParamSettingData')
         if self.poll_loop_count == 10:
@@ -161,6 +166,7 @@ class Util():
         logging.debug("mSolarPanelState {} => {}".format(int(bs[3]), self.Bytes2Int(bs, 3, 1) >> 7))
         logging.debug("mBatteryState {} => {}".format(int(bs[4]), self.Bytes2Int(bs, 4, 1)))
 <<<<<<< HEAD
+<<<<<<< HEAD
         #logging.debug("mControllerInfo {} {} {} {} => {}".format(int(bs[5]), int(bs[6]), int(bs[7]), int(bs[8]), self.Bytes2Int(bs, 5, 4)))
         # the packet received seems to be between 7 and 19 in length for some reason (like it's reading the next few words even though I told it to read 1 word)
         # when the length is > 7 the chargeState seems to be in index 4, otherwise it's in index 5
@@ -173,6 +179,33 @@ class Util():
 =======
         # logging.debug("mControllerInfo {} {} {} {} => {}".format(int(bs[5]), int(bs[6]), int(bs[7]), int(bs[8]), self.Bytes2Int(bs, 5, 4)))
 >>>>>>> 78dbbd7... Turning on SolarPanelAndBatteryState polling
+=======
+        logging.debug("mControllerInfo {} {} {} {} => {}".format(int(bs[5]), int(bs[6]), int(bs[7]), int(bs[8]), self.Bytes2Int(bs, 5, 4)))
+        '''chargeStateVal = int(bs[5])
+        chargeStateStr = ""
+        if chargeState == 0:
+            chargeStateStr = "charging deactivated"
+        elif chargeState == 1: 
+            chargeStateStr = "charging activated"
+        elif chargeState == 2: 
+            chargeStateStr = "mppt charging mode"
+        elif chargeState == 3: 
+            chargeStateStr = "equalizing charging mode"
+        elif chargeState == 4: 
+            chargeStateStr = "boost charging mode"
+        elif chargeState == 5: 
+            chargeStateStr = "floating charging mode"
+        elif chargeState == 6: 
+            chargeStateStr = "current limiting (overpower)"'''
+        chargeStateLocal = ["charging deactivated","charging activated","mppt charging mode","equalizing charging mode","boost charging mode","floating charging mode","current limiting (overpower)"]
+        if int(bs[5]) >= 0 and int(bs[5]) <=6:
+            try:
+                logging.debug("mChargeState {} => {}".format(int(bs[5]), self.SolarPanelAndBatteryState.chargeState[int(bs[5])]))
+            except:
+                logging.debug("mChargeState {} => {}".format(int(bs[5]), chargeStateLocal[int(bs[5])]))
+        else:
+            logging.debug("Invalid charge state, should be between 0 and 6 -> val: {}".format(int(bs[5]))
+>>>>>>> 2a00b85... returning new state data, adding string arrays
         return
 
     def updateSolarPanelInfo(self, bs):
