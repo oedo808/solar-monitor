@@ -410,7 +410,7 @@ class PowerDevice():
             'maxdiff': 15000
         }
         self._charge_mstate = {
-            'val': 0,
+            'val': 6,
             'min': 0,
             'max': 6,
             'maxdiff': 6
