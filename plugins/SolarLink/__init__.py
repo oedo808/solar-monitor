@@ -202,11 +202,16 @@ class Util():
         elif chargeState == 6: 
             chargeStateStr = "current limiting (overpower)"'''
         chargeStateLocal = ["charging deactivated","charging activated","mppt charging mode","equalizing charging mode","boost charging mode","floating charging mode","current limiting (overpower)"]
-        if int(bs[5]) >= 0 and int(bs[5]) <=6:
+        # the packet received seems to be between 7 and 19 in length for some reason (like it's reading the next few words even though I told it to read 1 word)
+        # when the length is > 7 the chargeState seems to be in element 4, otherwise it's in element 5
+        chargeStateElement = 5
+        if len(bs) < 8:
+            chargeStateElement = 4
+        if int(bs[chargeStateElement]) >= 0 and int(bs[chargeStateElement]) <=6:
             try:
-                logging.debug("mChargeState {} => {}".format(int(bs[5]), self.SolarPanelAndBatteryState.chargeState[int(bs[5])]))
+                logging.debug("mChargeState {} => {}".format(int(bs[chargeStateElement]), self.SolarPanelAndBatteryState.chargeState[int(bs[chargeStateElement])]))
             except:
-                logging.debug("mChargeState {} => {}".format(int(bs[5]), chargeStateLocal[int(bs[5])]))
+                logging.debug("mChargeState {} => {}".format(int(bs[chargeStateElement]), chargeStateLocal[int(bs[chargeStateElement])]))
         else:
 <<<<<<< HEAD
             logging.debug("Invalid charge state, should be between 0 and 6 -> val: {}".format(int(bs[5]))
