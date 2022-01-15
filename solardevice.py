@@ -221,7 +221,7 @@ class SolarDevice(gatt.Device):
 
             # I can't seem to get charge_state to log
             try:
-                self.datalogger.log(self.logger_name, 'charge_state', self.entities.charge_state)
+                self.datalogger.log(self.logger_name, 'forced_charge_state', self.entities.charge_state)
             except:
                 pass
 
