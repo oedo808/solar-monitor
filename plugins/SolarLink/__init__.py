@@ -167,6 +167,7 @@ class Util():
         logging.debug("mBatteryState {} => {}".format(int(bs[4]), self.Bytes2Int(bs, 4, 1)))
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         #logging.debug("mControllerInfo {} {} {} {} => {}".format(int(bs[5]), int(bs[6]), int(bs[7]), int(bs[8]), self.Bytes2Int(bs, 5, 4)))
         # the packet received seems to be between 7 and 19 in length for some reason (like it's reading the next few words even though I told it to read 1 word)
         # when the length is > 7 the chargeState seems to be in index 4, otherwise it's in index 5
@@ -181,6 +182,9 @@ class Util():
 >>>>>>> 78dbbd7... Turning on SolarPanelAndBatteryState polling
 =======
         logging.debug("mControllerInfo {} {} {} {} => {}".format(int(bs[5]), int(bs[6]), int(bs[7]), int(bs[8]), self.Bytes2Int(bs, 5, 4)))
+=======
+        #logging.debug("mControllerInfo {} {} {} {} => {}".format(int(bs[5]), int(bs[6]), int(bs[7]), int(bs[8]), self.Bytes2Int(bs, 5, 4)))
+>>>>>>> 86dc4be... Removing indexes above 5
         '''chargeStateVal = int(bs[5])
         chargeStateStr = ""
         if chargeState == 0:
