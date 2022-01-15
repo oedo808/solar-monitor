@@ -679,16 +679,22 @@ class PowerDevice():
     @property
     def charge_mstate(self):
 <<<<<<< HEAD
+<<<<<<< HEAD
         return self._charge_mstate['val']
 =======
+=======
+        logging.debug("charge_mstate read {}".format(self._charge_mstate))
+>>>>>>> 1211f7c... debugging charge_state props
         return self._charge_mstate
 >>>>>>> 6f4b5cb... Adding properties and validation for charge state
     @charge_mstate.setter
     def charge_mstate(self, value):
+        logging.debug("charge_mstate set {}".format(value))
         self.validate('_charge_mstate', value)
 
     @property
     def charge_state(self):
+<<<<<<< HEAD
 <<<<<<< HEAD
         chargeStateStr = ["charging deactivated","charging activated","mppt charging mode","equalizing charging mode","boost charging mode","floating charging mode","current limiting (overpower)"]
         return chargeStateStr[int(self.charge_mstate)]
@@ -703,6 +709,13 @@ class PowerDevice():
         self.validate('_charge_mstate', self.chargeState[value])
 >>>>>>> 6f4b5cb... Adding properties and validation for charge state
 =======
+=======
+        logging.debug("charge_state read {}".format(self.chargeState[self._charge_mstate]))
+        return self.chargeState[self._charge_mstate]
+    @charge_state.setter
+    def charge_state(self, value):
+        logging.debug("charge_state set {}, ".format(value, self.chargeState.index(value)))
+>>>>>>> 1211f7c... debugging charge_state props
         self._charge_mstate = self.chargeState.index(value)
 >>>>>>> 7b1f5be... fix in charge_state.setter
 
