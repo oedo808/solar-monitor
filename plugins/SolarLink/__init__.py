@@ -127,6 +127,7 @@ class Util():
             datas.append(self.create_poll_request('SolarPanelInfo'))
             datas.append(self.create_poll_request('BatteryParamInfo'))
             datas.append(self.create_poll_request('SolarPanelAndBatteryState'))
+            datas.append(self.create_poll_request('HistoricalData'))
         return datas
 
 
