@@ -164,7 +164,7 @@ class Util():
         if len(bs) < 8:
             chargeStateElement = 4
         self.PowerDevice.entities.charge_state = int(bs[chargeStateElement])
-        logging.debug("charge_state set {} => {}".format(int(bs[chargeStateElement]), self.PowerDevice.entities.charge_state))
+        logging.debug("mChargeState {} => {} - chargeStateIndex: {}".format(int(bs[chargeStateElement]), self.PowerDevice.entities.charge_state, chargeStateIndex))
         return
 
     def updateSolarPanelInfo(self, bs):
