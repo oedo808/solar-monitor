@@ -181,7 +181,7 @@ class Util():
             except:
                 logging.debug("mChargeState {} => {}".format(int(bs[5]), chargeStateLocal[int(bs[5])]))
         else:
-            logging.debug("Invalid charge state, should be between 0 and 6 -> val: {}".format(int(bs[5]))
+            logging.debug("Invalid charge state, should be between 0 and 6 -> val: {}".format(int(bs[5])))
         return
 
     def updateSolarPanelInfo(self, bs):
