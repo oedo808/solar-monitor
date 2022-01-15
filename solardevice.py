@@ -408,6 +408,13 @@ class PowerDevice():
             'max': 15000,
             'maxdiff': 15000
         }
+        self._charge_mstate = {
+            'val': 0,
+            'min': 0,
+            'max': 6,
+            'maxdiff': 6
+        }
+        self._chargeState = ["charging deactivated","charging activated","mppt charging mode","equalizing charging mode","boost charging mode","floating charging mode","current limiting (overpower)"]
         self._msg = None
         self._status = None
 
@@ -664,6 +671,20 @@ class PowerDevice():
     @charge_power.setter
     def charge_power(self, value):
         self.charge_mpower = value * 1000
+
+    @property
+    def charge_mstate(self):
+        return self._charge_mstate
+    @charge_mstate.setter
+    def charge_mstate(self, value):
+        self.validate('_charge_mstate', value)
+
+    @property
+    def charge_state(self):
+        return self.chargeState[self._charge_mstate]
+    @charge_state.setter
+    def charge_state(self, value):
+        self.validate('_charge_mstate', self.chargeState[value])
 
 
     @property
