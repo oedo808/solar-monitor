@@ -131,6 +131,11 @@ class Util():
             datas.append(self.create_poll_request(cmd))
             datas.append(self.create_poll_request('SolarPanelInfo'))
             datas.append(self.create_poll_request('BatteryParamInfo'))
+<<<<<<< HEAD
+=======
+            datas.append(self.create_poll_request('SolarPanelAndBatteryState'))
+            datas.append(self.create_poll_request('HistoricalData'))
+>>>>>>> c4bf88c... adding HistoricalData to cmdRequest
         return datas
 
 
