@@ -425,6 +425,7 @@ class PowerDevice():
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
         self._charge_state = "current limiting (overpower)"
@@ -433,6 +434,8 @@ class PowerDevice():
 >>>>>>> f5adef0... fixing another breaking issue on charge_state
         self._chargeState = ["charging deactivated","charging activated","mppt charging mode","equalizing charging mode","boost charging mode","floating charging mode","current limiting (overpower)"]
 >>>>>>> 6f4b5cb... Adding properties and validation for charge state
+=======
+>>>>>>> 1ed17df... charge_state working, cleaning up debug mess
         self._msg = None
         self._status = None
 
