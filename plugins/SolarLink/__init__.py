@@ -204,8 +204,12 @@ class Util():
             except:
                 logging.debug("mChargeState {} => {}".format(int(bs[5]), chargeStateLocal[int(bs[5])]))
         else:
+<<<<<<< HEAD
             logging.debug("Invalid charge state, should be between 0 and 6 -> val: {}".format(int(bs[5]))
 >>>>>>> 2a00b85... returning new state data, adding string arrays
+=======
+            logging.debug("Invalid charge state, should be between 0 and 6 -> val: {}".format(int(bs[5])))
+>>>>>>> bdecc3b... syntax issue
         return
 
     def updateSolarPanelInfo(self, bs):
