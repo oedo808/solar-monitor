@@ -35,6 +35,10 @@ class Util():
         REG_ADDR = 266
         on       = 1
         off      = 0
+    class HitoricalData():
+        REG_ADDR = 267
+        READ_WORD = 21
+        RESP_ID = 42
 
 
     def __init__(self, power_device):                  
