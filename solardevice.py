@@ -219,13 +219,6 @@ class SolarDevice(gatt.Device):
                     logging.debug("[{}] Could not find {}".format(self.logger_name, item))
                     pass
 
-            # I can't seem to get charge_state to log
-            try:
-                self.datalogger.log(self.logger_name, 'charge_mstate', self.entities.charge_mstate)
-                self.datalogger.log(self.logger_name, 'charge_state_forced', self.entities.charge_state)
-            except:
-                pass
-
             # We want celsius, not kelvin
             try:
                 self.datalogger.log(self.logger_name, 'temperature', self.entities.temperature_celsius)
