@@ -35,7 +35,7 @@ class Util():
         REG_ADDR = 266
         on       = 1
         off      = 0
-    class HitoricalData():
+    class HistoricalData():
         REG_ADDR = 267
         READ_WORD = 21
         RESP_ID = 42
@@ -98,6 +98,8 @@ class Util():
             data = self.create_poll_request('SolarPanelInfo')
         if self.poll_loop_count == 5:
             data = self.create_poll_request('SolarPanelAndBatteryState')
+        if self.poll_loop_count == 5:
+            self.create_poll_request('HistoricalData')
         # if self.poll_loop_count == 7:
         #     self.create_poll_request('ParamSettingData')
         if self.poll_loop_count == 10:
@@ -216,7 +218,8 @@ class Util():
                 logging.debug("Switch off")
         '''
 
-
+    def updateHistoricalData(self, bs):
+        logging.debug("Historical Hex Data Dump: {}".format(bs.hex()))
 
     def Bytes2Int(self, bs, offset, length):
         # Reads data from a list of bytes, and converts to an int
@@ -324,7 +327,10 @@ class Util():
         elif cmd == 'RegulatorPowerOff':                                                                                                          
             regAddr = self.RegulatorPower.REG_ADDR
             readWrd = self.RegulatorPower.off                                                                         
-            function = self.function_WRITE                                     
+            function = self.function_WRITE
+        elif cmd == 'HistoricalData':
+            regAddr = self.HistoricalData.REG_ADDR                           
+            readWrd = self.HistoricalData.READ_WORD  
 
         if regAddr:
             data = []
