@@ -224,8 +224,12 @@ class Util():
 >>>>>>> bdecc3b... syntax issue
 =======
         self.PowerDevice.entities.charge_state = int(bs[chargeStateElement])
+<<<<<<< HEAD
         logging.debug("charge_state set {} => {}".format(int(bs[chargeStateElement]), self.PowerDevice.entities.charge_state))
 >>>>>>> b81d56e... cleaning validation and extra logging from init
+=======
+        logging.debug("mChargeState {} => {} - chargeStateIndex: {}".format(int(bs[chargeStateElement]), self.PowerDevice.entities.charge_state, chargeStateIndex))
+>>>>>>> c714b8b... debug log format change + log dynamic state index
         return
 
     def updateSolarPanelInfo(self, bs):
