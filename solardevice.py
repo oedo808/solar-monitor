@@ -689,7 +689,8 @@ class PowerDevice():
 
     @property
     def charge_state(self):
-        return self._chargeState[self.charge_mstate]
+        chargeStateStr = ["charging deactivated","charging activated","mppt charging mode","equalizing charging mode","boost charging mode","floating charging mode","current limiting (overpower)"]
+        return chargeStateStr[self.charge_mstate]
     @charge_state.setter
     def charge_state(self, value):
         self.charge_mstate = value
