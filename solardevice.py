@@ -690,13 +690,10 @@ class PowerDevice():
 
     @property
     def charge_state(self):
-        logging.debug("charge_state read {}".format(self.chargeState[self._charge_mstate]))
-        return self.chargeState[self._charge_mstate]
+        return self._chargeState[self._charge_mstate]
     @charge_state.setter
     def charge_state(self, value):
-        logging.debug("charge_state set {}, ".format(value, self.chargeState.index(value)))
-        self._charge_mstate = self.chargeState.index(value)
-
+        self._charge_mstate = self._chargeState.index(value)
 
     @property
     def power_switch(self):
