@@ -223,22 +223,39 @@ class Util():
 
     def updateHistoricalData(self, bs):
         logging.debug("mHistDailyMinVoltage (0x010B) {} {} => {}V".format(int(bs[3]), int(bs[4]), self.Bytes2Int(bs, 3, 2) * 0.1))
+        self.PowerDevice.entities.hist_data_daily_min_voltage = self.Bytes2Int(bs, 3, 2) * 0.1
         logging.debug("mHistDailyMaxVoltage (0x010C) {} {} => {}V".format(int(bs[5]), int(bs[6]), self.Bytes2Int(bs, 5, 2) * 0.1))
+        self.PowerDevice.entities.hist_data_daily_max_voltage = self.Bytes2Int(bs, 5, 2) * 0.1
         logging.debug("mHistDailyMaxChargingCurrent (0x010D) {} {} => {}A".format(int(bs[7]), int(bs[8]), self.Bytes2Int(bs, 7, 2) * 0.01))
+        self.PowerDevice.entities.hist_data_daily_max_charge_current = self.Bytes2Int(bs, 7, 2) * 0.01
         logging.debug("mHistDailyMaxDischargeCurrent (0x010E) {} {} => {}A".format(int(bs[9]), int(bs[10]), self.Bytes2Int(bs, 9, 2) * 0.01))
+        self.PowerDevice.entities.hist_data_daily_max_discharge_current = self.Bytes2Int(bs, 9, 2) * 0.01
         logging.debug("mHistDailyMaxChargePower (0x010F) {} {} => {}W".format(int(bs[11]), int(bs[12]), self.Bytes2Int(bs, 11, 2)))
+        self.PowerDevice.entities.hist_data_daily_max_charge_power = self.Bytes2Int(bs, 11, 2)
         logging.debug("mHistDailyMaxDischargePower (0x0110) {} {} => {}W".format(int(bs[13]), int(bs[14]), self.Bytes2Int(bs, 13, 2)))
+        self.PowerDevice.entities.hist_data_daily_max_discharge_power = self.Bytes2Int(bs, 13, 2)
         logging.debug("mHistDailyChargeAH (0x0111) {} {} => {}AH".format(int(bs[15]), int(bs[16]), self.Bytes2Int(bs, 15, 2)))
+        self.PowerDevice.entities.hist_data_daily_charge_AH = self.Bytes2Int(bs, 15, 2)
         logging.debug("mHistDailyDischargeAH (0x0112) {} {} => {}AH".format(int(bs[17]), int(bs[18]), self.Bytes2Int(bs, 17, 2)))
+        self.PowerDevice.entities.hist_data_daily_discharge_AH = self.Bytes2Int(bs, 17, 2)
         logging.debug("mHistDailyPowerGeneration (0x0113) {} {} => {}WH".format(int(bs[19]), int(bs[20]), self.Bytes2Int(bs, 19, 2)))
+        self.PowerDevice.entities.hist_data_daily_power_generation = self.Bytes2Int(bs, 19, 2)
         logging.debug("mHistDailyPowerConsumption (0x0114) {} {} => {}WH".format(int(bs[21]), int(bs[22]), self.Bytes2Int(bs, 21, 2)))
+        self.PowerDevice.entities.hist_data_daily_power_consumption = self.Bytes2Int(bs, 21, 2)
         logging.debug("mHistTotalOperatingDays (0x0115) {} {} => {}".format(int(bs[23]), int(bs[24]), self.Bytes2Int(bs, 23, 2)))
+        self.PowerDevice.entities.hist_data_total_operating_days = self.Bytes2Int(bs, 23, 2)
         logging.debug("mHistTotalNumBatteryOverDischarges (0x0116) {} {} => {}".format(int(bs[25]), int(bs[26]), self.Bytes2Int(bs, 25, 2)))
+        self.PowerDevice.entities.hist_data_total_num_battery_over_discharges = self.Bytes2Int(bs, 25, 2)
         logging.debug("mHistTotalNumBatteryFullCharges (0x0117) {} {} => {}".format(int(bs[27]), int(bs[28]), self.Bytes2Int(bs, 27, 2)))
+        self.PowerDevice.entities.hist_data_total_num_battery_full_charges = self.Bytes2Int(bs, 27, 2)
         logging.debug("mHistTotalChargingAH (0x0118) {} {} {} {} => {}AH".format(int(bs[29]), int(bs[30]), int(bs[31]), int(bs[32]), self.Bytes2Int(bs, 29, 4)))
+        self.PowerDevice.entities.hist_data_total_charging_AH = self.Bytes2Int(bs, 29, 4)
         logging.debug("mHistTotalDischargingAH (0x011A) {} {} {} {} => {}AH".format(int(bs[33]), int(bs[34]), int(bs[35]), int(bs[36]), self.Bytes2Int(bs, 33, 4)))
+        self.PowerDevice.entities.hist_data_total_discharging_AH = self.Bytes2Int(bs, 33, 4)
         logging.debug("mHistTotalPowerGeneration (0x011C) {} {} {} {} => {}KWH".format(int(bs[37]), int(bs[38]), int(bs[39]), int(bs[40]), self.Bytes2Int(bs, 37, 4) / 1000))
+        self.PowerDevice.entities.hist_data_total_power_generation = self.Bytes2Int(bs, 37, 4) / 1000
         logging.debug("mHistTotalPowerConsumption (0x011E) {} {} {} {} => {}KWH".format(int(bs[41]), int(bs[42]), int(bs[43]), int(bs[44]), self.Bytes2Int(bs, 41, 4) / 1000))
+        self.PowerDevice.entities.hist_data_total_power_consumption = self.Bytes2Int(bs, 41, 4) / 1000
         logging.debug("HistDataPayloadCRC (0x) {} {} => 0x{} byte: {}".format(int(bs[45]), int(bs[46]), bs[45:47].hex(' '), bs[45:47]))
 
         self.PowerDevice.entities.hist_data_temp = bs

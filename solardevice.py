@@ -423,8 +423,107 @@ class PowerDevice():
             'max': 6,
             'maxdiff': 6
         }
-        self._hist_data_temp = { 
-            'val': b'\xff\x03\x0e\x00H\x00\x84\x00%\x11\x07\x00\x84\x00\x00\x00\x00r\xb0'
+        self._hist_data_daily_min_voltage = {
+            'val': 0,
+            'min': 0,
+            'max': 48000,
+            'maxdiff': 120
+        }
+        self._hist_data_daily_max_voltage = { 
+            'val': 0,
+            'min': 0,
+            'max': 48000,
+            'maxdiff': 12000
+        }
+        self._hist_data_daily_max_charge_current = {
+            'val': 0,
+            'min': 0,
+            'max': 30000,
+            'maxdiff': 10000
+        }
+        self._hist_data_daily_max_discharge_current = {
+            'val': 0,
+            'min': 0,
+            'max': 30000,
+            'maxdiff': 10000
+        }
+        self._hist_data_daily_max_charge_power = {
+            'val': 0,
+            'min': 0,
+            'max': 30000,
+            'maxdiff': 10000
+        }
+        self._hist_data_daily_max_discharge_power = {
+            'val': 0,
+            'min': 0,
+            'max': 30000,
+            'maxdiff': 10000
+        }
+        self._hist_data_daily_charge_AH = {
+            'val': 0,
+            'min': 0,
+            'max': 30000,
+            'maxdiff': 10000
+        }
+        self._hist_data_daily_discharge_AH = {
+            'val': 0,
+            'min': 0,
+            'max': 30000,
+            'maxdiff': 10000
+        }
+        self._hist_data_daily_power_generation = {
+            'val': 0,
+            'min': 0,
+            'max': 30000,
+            'maxdiff': 10000
+        }
+        self._hist_data_daily_power_consumption = {
+            'val': 0,
+            'min': 0,
+            'max': 30000,
+            'maxdiff': 10000
+        }
+        self._hist_data_total_operating_days = {
+            'val': 0,
+            'min': 0,
+            'max': 36500,
+            'maxdiff': 1
+        }
+        self._hist_data_total_num_battery_over_discharges = {
+            'val': 0,
+            'min': 0,
+            'max': 999999,
+            'maxdiff': 10000
+        }
+        self._hist_data_total_num_battery_full_charges = {
+            'val': 0,
+            'min': 0,
+            'max': 999999,
+            'maxdiff': 10000
+        }
+        self._hist_data_total_charging_AH = {
+            'val': 0,
+            'min': 0,
+            'max': 30000,
+            'maxdiff': 10000
+        }
+        self._hist_data_total_discharging_AH = {
+            'val': 0,
+            'min': 0,
+            'max': 30000,
+            'maxdiff': 10000
+        }
+        self._hist_data_total_power_generation = {
+            'val': 0,
+            'min': 0,
+            'max': 30000,
+            'maxdiff': 10000
+        }
+        self._hist_data_total_power_consumption = {
+            'val': 0,
+            'min': 0,
+            'max': 30000,
+            'maxdiff': 10000
         }
         self._msg = None
         self._status = None
@@ -698,14 +797,111 @@ class PowerDevice():
     def charge_state(self, value):
         self.charge_mstate = value
 
+
+    # Start historical data
     @property
-    def hist_data_temp(self):
-        return self._hist_data_temp['val']
-    @hist_data_temp.setter
-    def hist_data_temp(self, value):
-        self._hist_data_temp['val'] = value
-
-
+    def hist_data_daily_min_voltage(self):
+        return self.hist_data_daily_min_voltage['val']
+    @hist_data_daily_min_voltage.setter
+    def hist_data_daily_min_voltage(self, value):
+        self.validate('_hist_data_daily_min_voltage', value)
+    @property
+    def hist_data_daily_max_voltage(self):
+        return self._hist_data_daily_max_voltage['val']
+    @hist_data_daily_max_voltage.setter
+    def hist_data_daily_max_voltage(self, value):
+        self.validate('_hist_data_daily_max_voltage', value)
+    @property
+    def hist_data_daily_max_charge_current(self):
+        return self._hist_data_daily_max_charge_current['val']
+    @hist_data_daily_max_charge_current.setter
+    def hist_data_daily_max_charge_current(self, value):
+        self.validate('_hist_data_daily_max_charge_current', value)
+    @property
+    def hist_data_daily_max_discharge_current(self):
+        return self._hist_data_daily_max_discharge_current['val']
+    @hist_data_daily_max_discharge_current.setter
+    def hist_data_daily_max_discharge_current(self, value):
+        self.validate('_hist_data_daily_max_discharge_current', value)
+    @property
+    def hist_data_daily_max_charge_power(self):
+        return self._hist_data_daily_max_charge_power['val']
+    @hist_data_daily_max_charge_power.setter
+    def hist_data_daily_max_charge_power(self, value):
+        self.validate('_hist_data_daily_max_charge_power', value)
+    @property
+    def hist_data_daily_max_discharge_power(self):
+        return self._hist_data_daily_max_discharge_power['val']
+    @hist_data_daily_max_discharge_power.setter
+    def hist_data_daily_max_discharge_power(self, value):
+        self.validate('_hist_data_daily_max_discharge_power', value)
+    @property
+    def hist_data_daily_charge_AH(self):
+        return self._hist_data_daily_charge_AH['val']
+    @hist_data_daily_charge_AH.setter
+    def hist_data_daily_charge_AH(self, value):
+        self.validate('_hist_data_daily_charge_AH', value)
+    @property
+    def hist_data_daily_discharge_AH(self):
+        return self._hist_data_daily_discharge_AH['val']
+    @hist_data_daily_discharge_AH.setter
+    def hist_data_daily_discharge_AH(self, value):
+        self.validate('_hist_data_daily_discharge_AH', value)
+    @property
+    def hist_data_daily_power_generation(self):
+        return self._hist_data_daily_power_generation['val']
+    @hist_data_daily_power_generation.setter
+    def hist_data_daily_power_generation(self, value):
+        self.validate('_hist_data_daily_power_generation', value)
+    @property
+    def hist_data_daily_power_consumption(self):
+        return self._hist_data_daily_power_consumption['val']
+    @hist_data_daily_power_consumption.setter
+    def hist_data_daily_power_consumption(self, value):
+        self.validate('_hist_data_daily_power_consumption', value)
+    @property
+    def hist_data_total_operating_days(self):
+        return self._hist_data_total_operating_days['val']
+    @hist_data_total_operating_days.setter
+    def hist_data_total_operating_days(self, value):
+        self.validate('_hist_data_total_operating_days', value)
+    @property
+    def hist_data_total_num_battery_over_discharges(self):
+        return self._hist_data_total_num_battery_over_discharges['val']
+    @hist_data_total_num_battery_over_discharges.setter
+    def hist_data_total_num_battery_over_discharges(self, value):
+        self.validate('_hist_data_total_num_battery_over_discharges', value)
+    @property
+    def hist_data_total_num_battery_full_charges(self):
+        return self._hist_data_total_num_battery_full_charges['val']
+    @hist_data_total_num_battery_full_charges.setter
+    def hist_data_total_num_battery_full_charges(self, value):
+        self.validate('_hist_data_total_num_battery_full_charges', value)
+    @property
+    def hist_data_total_charging_AH(self):
+        return self._hist_data_total_charging_AH['val']
+    @hist_data_total_charging_AH.setter
+    def hist_data_total_charging_AH(self, value):
+        self.validate('_hist_data_total_charging_AH', value)
+    @property
+    def hist_data_total_discharging_AH(self):
+        return self._hist_data_total_discharging_AH['val']
+    @hist_data_total_discharging_AH.setter
+    def hist_data_total_discharging_AH(self, value):
+        self.validate('_hist_data_total_discharging_AH', value)
+    @property
+    def hist_data_total_power_generation(self):
+        return self._hist_data_total_power_generation['val']
+    @hist_data_total_power_generation.setter
+    def hist_data_total_power_generation(self, value):
+        self.validate('_hist_data_total_power_generation', value)
+    @property
+    def hist_data_total_power_consumption(self):
+        return self._hist_data_total_power_consumption['val']
+    @hist_data_total_power_consumption.setter
+    def hist_data_total_power_consumption(self, value):
+        self.validate('_hist_data_total_power_consumption', value)
+    # end historical data
     @property
     def power_switch(self):
         return self._power_switch
