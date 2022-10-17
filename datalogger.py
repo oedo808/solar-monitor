@@ -94,13 +94,13 @@ class DataLoggerMqtt():
         elif var == "soc":
             val['device_class'] = "battery"
             val['unit_of_measurement'] = "%"
-        elif var == "power" or var == "charge_power" or var == "input_power":
+        elif var == "power" or var == "charge_power" or var == "input_power" or var == "hist_data_daily_max_charge_power" or var == "hist_data_daily_max_discharge_power":
             val['device_class'] = "power"
             val['unit_of_measurement'] = "W"
-        elif var == "voltage" or var == "charge_voltage" or var == "input_voltage":
+        elif var == "voltage" or var == "charge_voltage" or var == "input_voltage" or var == "hist_data_daily_min_voltage" or var == "hist_data_daily_max_voltage":
             val['icon'] = "mdi:flash"
             val['unit_of_measurement'] = "V"
-        elif var == "current" or var == "charge_current" or var == "input_current":
+        elif var == "current" or var == "charge_current" or var == "input_current" or var == "hist_data_daily_max_charge_current" or var == "hist_data_daily_max_discharge_current":
             val['icon'] = "mdi:current-dc"
             val['unit_of_measurement'] = "A"
         elif var == "charge_cycles":
@@ -115,6 +115,20 @@ class DataLoggerMqtt():
             val['icon'] = "mdi:current-ac"
         elif "rectifier" in device:
             val['icon'] = "mdi:current-ac"
+        elif var == "hist_data_daily_charge_AH" or var == "hist_data_daily_discharge_AH" or var == "hist_data_total_charging_AH" or var == "hist_data_total_discharging_AH":
+            val['device_class'] = "energy"
+            val['unit_of_measurement'] = "Ah"
+        elif var == "hist_data_daily_power_generation" or var == "hist_data_daily_power_consumption":
+            val['device_class'] = "energy"
+            val['unit_of_measurement'] = "Wh"
+        elif var == "hist_data_total_power_generation" or var == "hist_data_total_power_generation":
+            val['device_class'] = "energy"
+            val['unit_of_measurement'] = "kWh"
+        elif var == "hist_data_total_operating_days":
+            val['device_class'] = "duration"
+            val['unit_of_measurement'] = "d"
+        elif var == "hist_data_total_num_battery_over_discharges" or var == "hist_data_total_num_battery_full_charges":
+            val['state_class'] = "total"
 
         ret = self.client.publish(ha_topic, json.dumps(val), retain=True)
 
