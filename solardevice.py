@@ -210,7 +210,14 @@ class SolarDevice(gatt.Device):
                      'voltage', 'input_voltage', 'charge_voltage',
                      'power',   'input_power',   'charge_power',
                      'soc', 'capacity', 'charge_cycles', 'state', 'health', 'power_switch',
-                     'charge_state'
+                     'charge_state', 'hist_data_daily_min_voltage', 'hist_data_daily_max_voltage',
+                     'hist_data_daily_max_charge_current', 'hist_data_daily_max_discharge_current',
+                     'hist_data_daily_max_charge_power', 'hist_data_daily_max_discharge_power',
+                     'hist_data_daily_charge_AH', 'hist_data_daily_discharge_AH', 'hist_data_daily_power_generation',
+                     'hist_data_daily_power_consumption', 'hist_data_total_operating_days', 
+                     'hist_data_total_num_battery_over_discharges', 'hist_data_total_num_battery_full_charges',
+                     'hist_data_total_charging_AH', 'hist_data_total_discharging_AH', 
+                     'hist_data_total_power_generation', 'hist_data_total_power_consumption'
                     ]
             for item in items:
                 try:
