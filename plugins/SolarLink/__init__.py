@@ -258,7 +258,6 @@ class Util():
         self.PowerDevice.entities.hist_data_total_power_consumption = self.Bytes2Int(bs, 41, 4) / 1000
         logging.debug("HistDataPayloadCRC (0x) {} {} => 0x{} byte: {}".format(int(bs[45]), int(bs[46]), bs[45:47].hex(' '), bs[45:47]))
 
-        self.PowerDevice.entities.hist_data_temp = bs
 
     def Bytes2Int(self, bs, offset, length):
         # Reads data from a list of bytes, and converts to an int
