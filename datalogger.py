@@ -88,7 +88,7 @@ class DataLoggerMqtt():
             "state_topic": topic,
             "force_update": True,
         }
-        if var == "temperature":
+        if var == "temperature" or var == "battery_temperature":
             val['device_class'] = "temperature"
             val['unit_of_measurement'] = "°C"
         elif var == "soc":
