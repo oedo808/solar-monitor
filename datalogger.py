@@ -116,14 +116,17 @@ class DataLoggerMqtt():
         elif "rectifier" in device:
             val['icon'] = "mdi:current-ac"
         elif var == "hist_data_daily_charge_AH" or var == "hist_data_daily_discharge_AH" or var == "hist_data_total_charging_AH" or var == "hist_data_total_discharging_AH":
-            val['device_class'] = "energy"
+            val['device_class'] = "current"
             val['unit_of_measurement'] = "Ah"
+            val['state_class'] = "measurement"
         elif var == "hist_data_daily_power_generation" or var == "hist_data_daily_power_consumption":
-            val['device_class'] = "energy"
+            val['device_class'] = "power"
             val['unit_of_measurement'] = "Wh"
+            val['state_class'] = "measurement"
         elif var == "hist_data_total_power_generation" or var == "hist_data_total_power_generation":
-            val['device_class'] = "energy"
+            val['device_class'] = "power"
             val['unit_of_measurement'] = "kWh"
+            val['state_class'] = "measurement"
         elif var == "hist_data_total_operating_days":
             val['device_class'] = "duration"
             val['unit_of_measurement'] = "d"
